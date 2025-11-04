@@ -2,7 +2,9 @@ FROM python:3.9
 
 # download this https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx
 # copy model to avoid unnecessary download
-ADD https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx /root/.u2net/u2net.onnx
+RUN mkdir -p /home/.u2net && \
+    curl -L https://github.com/danielgatis/rembg/releases/download/v0.0.0/u2net.onnx \
+    -o /home/.u2net/u2net.onnx
 
 WORKDIR /app
 
